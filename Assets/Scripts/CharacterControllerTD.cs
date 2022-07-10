@@ -16,8 +16,6 @@ public class CharacterControllerTD : MonoBehaviour
     public DialogManager DialogManager;
 
     public Animator PlayerAnim;
-    public Animator AttackAnims;
-    public Animator ParticleAnims;
 
     void Awake()
     {
@@ -73,17 +71,6 @@ public class CharacterControllerTD : MonoBehaviour
         else
         {
             PlayerAnim.SetBool("isWalking", false);
-        }
-
-        if (Input.GetKeyDown(KeyCode.Mouse0))
-        {
-            AttackAnims.SetTrigger("Attack");
-            ParticleAnims.SetTrigger("ShootMelee");
-        }
-        else if (Input.GetKeyUp(KeyCode.Mouse0))
-        {
-            AttackAnims.SetTrigger("StopSwing");
-            ParticleAnims.SetTrigger("StopMeleeShoot");
         }
     }
 
