@@ -12,7 +12,7 @@ public class MoveStraight : MonoBehaviour
     {
         GetComponent<Rigidbody2D>().AddForce(transform.right * speed);
         GetComponent<Animator>().speed = lifetime;
-        GetComponent<AudioSource>().pitch = Random.Range(0.8f, 1.3f);
+        GetComponent<AudioSource>().pitch = Random.Range(1f, 1.2f);
     }
 
     void DestroySelf()

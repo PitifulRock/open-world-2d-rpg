@@ -41,6 +41,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Below
+    uniqueID: 3661258493
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
@@ -49,4 +52,7 @@ TagManager:
     locked: 0
   - name: Always On Top
     uniqueID: 201711557
+    locked: 0
+  - name: Cursor
+    uniqueID: 463623115
     locked: 0
