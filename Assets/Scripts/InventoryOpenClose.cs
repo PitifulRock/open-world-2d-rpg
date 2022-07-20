@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class InventoryOpenClose : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class InventoryOpenClose : MonoBehaviour
     public Animator invAnim;
 
     bool invIsOpen;
+
+    [SerializeField] AudioMixer MasterMix;
 
     // Start is called before the first frame update
     void Start()
@@ -31,6 +34,7 @@ public class InventoryOpenClose : MonoBehaviour
             {
                 invIsOpen = false;
                 invAnim.SetTrigger("InvClose");
+                Time.timeScale = 1;
             }
         }
     }
@@ -38,5 +42,10 @@ public class InventoryOpenClose : MonoBehaviour
     public void CloseInv()
     {
         InventoryObject.SetActive(false);
+    }
+
+    public void OpenIv()
+    {
+        Time.timeScale = 0;
     }
 }
