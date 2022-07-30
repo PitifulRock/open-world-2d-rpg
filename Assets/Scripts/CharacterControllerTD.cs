@@ -10,6 +10,7 @@ public class CharacterControllerTD : MonoBehaviour
     new Rigidbody2D rigidbody2D;
 
     public float movementSpeed = 1000.0f;
+    public float sprintSpeed = 1500.0f;
 
     public float PlayerHealth = 10f;
 
@@ -17,8 +18,11 @@ public class CharacterControllerTD : MonoBehaviour
 
     public Animator PlayerAnim;
 
+    private bool isSprinting;
+
     void Awake()
     {
+        isSprinting = false;
         DialogManager = GameObject.FindGameObjectWithTag("DDmanager").GetComponent<DialogManager>();
         DialogManager.Printer.SetActive(false);
 
@@ -42,8 +46,16 @@ public class CharacterControllerTD : MonoBehaviour
     {
         if (DialogManager.Printer.activeInHierarchy == false)
         {
-            // Set rigidbody velocity
-            rigidbody2D.velocity = (targetVelocity * movementSpeed) * Time.deltaTime; // Multiply the target by deltaTime to make movement speed consistent across different framerates
+            if (isSprinting == true)
+            {
+                // Set rigidbody velocity
+                rigidbody2D.velocity = (targetVelocity * sprintSpeed) * Time.deltaTime; // Multiply the target by deltaTime to make movement speed consistent across different framerates
+            }
+            else
+            {
+                // Set rigidbody velocity
+                rigidbody2D.velocity = (targetVelocity * movementSpeed) * Time.deltaTime; // Multiply the target by deltaTime to make movement speed consistent across different framerates
+            }
         }
     }
 
@@ -57,6 +69,15 @@ public class CharacterControllerTD : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             DialogManager.Click_Window();
+        }
+
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            isSprinting = true;
+        }
+        else
+        {
+            isSprinting = false;
         }
 
         if(DialogManager.Printer.activeInHierarchy == true)
